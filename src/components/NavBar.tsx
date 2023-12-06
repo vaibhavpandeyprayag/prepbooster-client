@@ -1,6 +1,9 @@
 import { Box, Typography, Avatar } from "@mui/material";
+import { PageContext } from "../contexts";
+import { useContext } from "react";
 
 const NavBar: React.FC<{}> = () => {
+  const page = useContext(PageContext);
   return (
     <Box
       sx={{

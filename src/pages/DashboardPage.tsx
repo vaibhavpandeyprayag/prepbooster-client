@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 
-const Dashboard: React.FC<{}> = () => {
+const DashboardPage: React.FC<{}> = () => {
   const [user, setUser] = useState({ firstName: "Vaibhav" });
   const [exam, setExam] = useState("");
 
@@ -109,4 +109,4 @@ const Dashboard: React.FC<{}> = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardPage;
