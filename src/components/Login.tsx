@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 
-const Signin: React.FC<{}> = () => {
+const Login: React.FC<{}> = () => {
   return (
     <Container
       maxWidth="sm"
@@ -16,7 +16,7 @@ const Signin: React.FC<{}> = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "100vh",
+        minHeight: "90vh",
       }}
     >
       <Box sx={{}}>
@@ -27,7 +27,13 @@ const Signin: React.FC<{}> = () => {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <TextField name="email" fullWidth id="email" label="Email *" />
+            <TextField
+              name="email"
+              fullWidth
+              id="email"
+              label="Email *"
+              sx={{ bgcolor: "white" }}
+            />
           </Grid>
           <Grid item xs={12}>
             <TextField
@@ -35,6 +41,7 @@ const Signin: React.FC<{}> = () => {
               fullWidth
               id="password"
               label="Password *"
+              sx={{ bgcolor: "white" }}
             />
           </Grid>
           <Grid item xs={12} sm={3}>
@@ -61,4 +68,4 @@ const Signin: React.FC<{}> = () => {
   );
 };
 
-export default Signin;
+export default Login;

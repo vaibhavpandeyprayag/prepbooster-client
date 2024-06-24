@@ -2,8 +2,18 @@ import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import HeroImg from "./../../assets/app_logo_transparent_2.png";
 import IntroImg1 from "./../../assets/app_logo.png";
 import "./HomePage.css";
+import { useNavigate } from "react-router-dom";
 
 const HomePage: React.FC<{}> = () => {
+  const navigate = useNavigate();
+
+  const gotoSignup = () => {
+    navigate("/auth/signup");
+  };
+  const gotoLogin = () => {
+    navigate("/auth/login");
+  };
+
   return (
     <div className={"homepage"}>
       <Box
@@ -30,8 +40,12 @@ const HomePage: React.FC<{}> = () => {
           justifyContent={"center"}
           alignItems={"center"}
         >
-          <Button variant={"outlined"}>Signup</Button>
-          <Button variant={"contained"}>Login</Button>
+          <Button variant={"outlined"} onClick={gotoSignup}>
+            Signup
+          </Button>
+          <Button variant={"contained"} onClick={gotoLogin}>
+            Login
+          </Button>
         </Box>
       </Box>
       <Box>

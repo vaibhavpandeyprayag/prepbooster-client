@@ -16,7 +16,7 @@ const Signup: React.FC<{}> = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "100vh",
+        minHeight: "90vh",
       }}
     >
       <Box sx={{}}>
@@ -32,6 +32,7 @@ const Signup: React.FC<{}> = () => {
               fullWidth
               id="firstName"
               label="First Name *"
+              sx={{ bgcolor: "white" }}
               autoFocus
             />
           </Grid>
@@ -40,11 +41,18 @@ const Signup: React.FC<{}> = () => {
               name="lastName"
               fullWidth
               id="lastName"
-              label="Last Name *"
+              label="Last Name"
+              sx={{ bgcolor: "white" }}
             />
           </Grid>
           <Grid item xs={12}>
-            <TextField name="email" fullWidth id="email" label="Email *" />
+            <TextField
+              name="email"
+              fullWidth
+              id="email"
+              label="Email *"
+              sx={{ bgcolor: "white" }}
+            />
           </Grid>
           <Grid item xs={12}>
             <TextField
@@ -52,6 +60,7 @@ const Signup: React.FC<{}> = () => {
               fullWidth
               id="password"
               label="Password *"
+              sx={{ bgcolor: "white" }}
             />
           </Grid>
           <Grid item xs={12} sm={3}>
