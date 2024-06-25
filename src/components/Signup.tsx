@@ -7,6 +7,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import NavBar from "./NavBar";
 
 const Signup: React.FC<{}> = () => {
   return (

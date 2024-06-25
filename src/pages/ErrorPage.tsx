@@ -11,7 +11,7 @@ const ErrorPage: React.FC<{}> = () => {
     <Box
       display={"flex"}
       flexDirection={"column"}
-      height={"50vh"}
+      height={"90vh"}
       justifyContent={"center"}
       alignItems={"center"}
     >

@@ -1,4 +1,4 @@
-import { Box, Typography, Avatar, Button } from "@mui/material";
+import { Box, Typography, Avatar, Button, Input } from "@mui/material";
 import {
   PageContext,
   TestContext,
@@ -6,7 +6,7 @@ import {
   TestInterface,
   pageMap,
 } from "../exports";
-import { useContext, useEffect, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 
 const NavBar: React.FC<{}> = () => {
   let title = "";
@@ -22,9 +22,11 @@ const NavBar: React.FC<{}> = () => {
     } else title = pageMap[page];
   }
 
+  const [text, setText] = useState("");
+
   useEffect(() => {
     console.log("NavBar rendered for the first time.");
-  }, []);
+  });
   useEffect(() => {
     console.log("NavBar rendered due to page change.");
   }, [page]);
@@ -72,7 +74,7 @@ const NavBar: React.FC<{}> = () => {
               setTimerInterval(
                 setInterval(() => {
                   // if (timer === 0) clearInterval(timerInterval);
-                  setTimer((prevTime) => {
+                  setTimer(prevTime => {
                     if (prevTime === 0) {
                       setTest(false);
 
@@ -96,6 +98,9 @@ const NavBar: React.FC<{}> = () => {
           </Box>
         )}
       </Box>
+      <Input
+        onInput={(e: any) => setText((e.target as HTMLInputElement).value)}
+      />
     </Box>
   );
 };
