@@ -8,6 +8,8 @@ import ErrorPage from "./pages/ErrorPage";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import DashboardPage from "./pages/DashboardPage";
+import UserScreen from "./components/UserScreen";
+import ExamRegistrationPage from "./pages/ExamRegistrationPage";
 
 function App() {
   const [page, setPage] = useState(null);
@@ -27,7 +29,14 @@ function App() {
             <Route path="login" element={<Login />}></Route>
             <Route path="*" element={<ErrorPage />}></Route>
           </Route>
-          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/user" element={<UserScreen />}>
+            <Route path="dashboard" element={<DashboardPage />} />
+            <Route
+              path="exam-registration"
+              element={<ExamRegistrationPage />}
+            />
+            <Route path="*" element={<ErrorPage />}></Route>
+          </Route>
 
           <Route path="/*" element={<ErrorPage />}></Route>
         </Routes>

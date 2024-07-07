@@ -1,3 +1,4 @@
+import { Home } from "@mui/icons-material";
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +25,7 @@ const ErrorPage: React.FC<{}> = () => {
         sx={{ mt: "2rem" }}
         onClick={gotoHome}
       >
-        Go to Home
+        <Home sx={{ mr: "0.5rem" }} /> Go to Home
       </Button>
     </Box>
   );

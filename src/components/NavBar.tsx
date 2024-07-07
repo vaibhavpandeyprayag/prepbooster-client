@@ -7,6 +7,8 @@ import {
   pageMap,
 } from "../exports";
 import { FormEvent, useContext, useEffect, useState } from "react";
+import Logo from "../assets/app_logo_transparent_2.png";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const NavBar: React.FC<{}> = () => {
   let title = "";
@@ -40,67 +42,34 @@ const NavBar: React.FC<{}> = () => {
   useEffect(() => {
     console.log("NavBar rendered due to timer ticking.");
   }, [timer]);
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        background:
-          "linear-gradient(270deg, rgb(20, 30, 48) 11.2%, rgb(36, 59, 85) 91.1%)",
-        padding: "1rem",
-        boxShadow: "0 0.1rem 0.5rem",
-        height: "12vh",
-      }}
-    >
-      <Box sx={{ display: "flex", alignItems: "center", gap: "2rem" }}>
-        <Typography variant="button" sx={{ color: "white" }}>
-          PrepBooster
-        </Typography>
-        <Typography variant="h5" sx={{ color: "white" }}>
-          {title}
-        </Typography>
-      </Box>
-      <Box>
-        {page !== 3 && page !== 4 && <Avatar>VP</Avatar>}
-        {page === 3 && test.running === false && (
-          <Button
-            variant="contained"
-            onClick={() => {
-              setTest((test: TestInterface) => ({
-                ...test,
-                running: true,
-              }));
-              setTimerInterval(
-                setInterval(() => {
-                  // if (timer === 0) clearInterval(timerInterval);
-                  setTimer(prevTime => {
-                    if (prevTime === 0) {
-                      setTest(false);
 
-                      return 0;
-                    }
-                    return prevTime - 1;
-                  });
-                }, 1000)
-              );
-            }}
-          >
-            Start
-          </Button>
-        )}
-        {page === 3 && test.running === true && (
-          <Box sx={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-            <Typography variant="body1" color="white">
-              Ends in {timer} min
-            </Typography>
-            <Button variant="contained">Submit</Button>
-          </Box>
-        )}
+  const navigate = useNavigate();
+  const logoClick = () => {
+    navigate("/home");
+  };
+  return (
+    <Box sx={{ backgroundColor: "rgb(211 211 211 / 25%)" }}>
+      <Box
+        display={"flex"}
+        alignItems={"center"}
+        justifyContent={"space-between"}
+        height={"10vh"}
+        boxShadow={"5"}
+        px={"1rem"}
+        sx={{ backgroundColor: "Background" }}
+      >
+        <img
+          src={Logo}
+          style={{
+            height: "2rem",
+            cursor: "pointer",
+            marginLeft: "1rem",
+            marginTop: "1rem",
+            marginBottom: "1rem",
+          }}
+          onClick={logoClick}
+        />
       </Box>
-      <Input
-        onInput={(e: any) => setText((e.target as HTMLInputElement).value)}
-      />
     </Box>
   );
 };
