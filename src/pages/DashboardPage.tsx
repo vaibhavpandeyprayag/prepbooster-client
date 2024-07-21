@@ -8,16 +8,17 @@ import {
   InputLabel,
   Link,
   MenuItem,
-  Modal,
   Paper,
   Select,
-  Slide,
   Typography,
-  Zoom,
 } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { PageContext } from "../exports";
-import { ArrowForward } from "@mui/icons-material";
+import {
+  ArrowForward,
+  Backspace,
+  KeyboardBackspace,
+} from "@mui/icons-material";
 import ExamRegImg from "../assets/exam-registration.jpg";
 import { useNavigate } from "react-router-dom";
 
@@ -26,12 +27,33 @@ const DashboardPage: React.FC<{}> = () => {
   const [user, setUser] = useState({ firstName: "Vaibhav" });
   const [exam, setExam] = useState("");
   const navigate = useNavigate();
-  // let registeredExams: any[] = [{id: 1, name: "GATE", code: "GATE"}]
-  let registeredExams: any[] = [];
-  let recentTests: any[] = [
-    { testName: "Test 1" },
-    { testName: "Test 2" },
-    { testName: "Test 3" },
+  let registeredExams: any[] = [{ id: 1, name: "GATE", code: "GATE" }];
+  // let registeredExams: any[] = [];
+  let recentTests = [
+    {
+      id: 1,
+      name: "Test 1",
+      type: "Full Test",
+      date: "19-05-2024",
+      obtained_marks: 58,
+      max_marks: 100,
+    },
+    {
+      id: 2,
+      name: "Test 2",
+      type: "Full Test",
+      date: "15-05-2024",
+      obtained_marks: 45,
+      max_marks: 100,
+    },
+    {
+      id: 3,
+      name: "Test 3",
+      type: "Full Test",
+      date: "13-05-2024",
+      obtained_marks: 39,
+      max_marks: 100,
+    },
   ];
 
   const routeToExamRegPage = () => {
@@ -54,115 +76,77 @@ const DashboardPage: React.FC<{}> = () => {
           </Box>
           <Card
             sx={{
-              minHeight: "100%",
               p: "1rem",
-              m: "1rem",
+              mx: "1rem",
               border: "1px solid lightgray",
+              bgcolor: "whitesmoke",
             }}
           >
             <Typography variant="h5" fontWeight={"bold"}>
               Performance
             </Typography>
             {registeredExams.length > 0 ? (
-              <Grid
-                container
-                columnSpacing={2}
-                sx={{ minHeight: "30vh", height: "auto", pt: "1rem" }}
-              >
-                <Grid item xs={12} md={5} lg={4} sx={{ minHeight: "100%" }}>
-                  <Paper elevation={1} sx={{ p: "1rem", height: "100%" }}>
-                    <FormControl fullWidth>
-                      <InputLabel id="ageSelectLabel">Select exam</InputLabel>
-                      <Select
-                        labelId="ageSelectLabel"
-                        id="demoSimpleSelect"
-                        value={exam}
-                        label="Select exam"
-                        onChange={e => setExam(e.target.value)}
-                      >
-                        <MenuItem value={"gate"}>GATE</MenuItem>
-                      </Select>
-                    </FormControl>
-
-                    {exam !== "" && (
-                      <Grid container spacing={2} sx={{ mt: 1 }}>
-                        <Grid item xs={12} sm={6}>
-                          <Card variant="outlined">
-                            <CardContent>
-                              <Typography color="text.secondary">
-                                Tests taken
-                              </Typography>
-                              <Typography
-                                variant="h5"
-                                sx={{ textAlign: "end" }}
-                              >
-                                2 / 11
-                              </Typography>
-                            </CardContent>
-                          </Card>
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                          <Card variant="outlined">
-                            <CardContent>
-                              <Typography color="text.secondary">
-                                Avg. Marks
-                              </Typography>
-                              <Typography
-                                variant="h5"
-                                sx={{ textAlign: "end" }}
-                              >
-                                75
-                              </Typography>
-                            </CardContent>
-                          </Card>
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                          <Card variant="outlined">
-                            <CardContent>
-                              <Typography color="text.secondary">
-                                Best
-                              </Typography>
-                              <Typography
-                                variant="h5"
-                                sx={{ textAlign: "end" }}
-                              >
-                                95
-                              </Typography>
-                            </CardContent>
-                          </Card>
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                          <Card variant="outlined">
-                            <CardContent>
-                              <Typography color="text.secondary">
-                                Worst
-                              </Typography>
-                              <Typography
-                                variant="h5"
-                                sx={{ textAlign: "end" }}
-                              >
-                                45
-                              </Typography>
-                            </CardContent>
-                          </Card>
-                        </Grid>
-                      </Grid>
-                    )}
-                  </Paper>
-                </Grid>
-
-                <Grid item xs={12} md={7} lg={8} sx={{ minHeight: "100%" }}>
-                  <Paper elevation={1} sx={{ p: "1rem", height: "100%" }}>
-                    <Card sx={{ height: "100%" }}>
-                      <CardContent sx={{ textAlign: "center", height: "100%" }}>
-                        <Typography variant="h3" sx={{ color: "lightgrey" }}>
-                          Graph
+              <Box sx={{ mt: "1rem" }}>
+                <Grid
+                  container
+                  rowGap={2}
+                  columnSpacing={2}
+                  sx={{ my: "1rem" }}
+                >
+                  <Grid item xs={12} sm={6} md={3}>
+                    <Card variant="outlined">
+                      <CardContent sx={{ p: "1rem" }}>
+                        <Typography color="text.secondary">
+                          Tests taken
+                        </Typography>
+                        <Typography variant="h5" sx={{ textAlign: "end" }}>
+                          2 / 11
                         </Typography>
                       </CardContent>
                     </Card>
-                  </Paper>
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <Card variant="outlined">
+                      <CardContent>
+                        <Typography color="text.secondary">
+                          Avg. Marks
+                        </Typography>
+                        <Typography variant="h5" sx={{ textAlign: "end" }}>
+                          75
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <Card variant="outlined">
+                      <CardContent>
+                        <Typography color="text.secondary">Best</Typography>
+                        <Typography variant="h5" sx={{ textAlign: "end" }}>
+                          95
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={3}>
+                    <Card variant="outlined">
+                      <CardContent>
+                        <Typography color="text.secondary">Worst</Typography>
+                        <Typography variant="h5" sx={{ textAlign: "end" }}>
+                          45
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
                 </Grid>
-              </Grid>
+
+                <Card sx={{ height: "100%", mt: "1rem" }}>
+                  <CardContent sx={{ textAlign: "center", height: "100%" }}>
+                    <Typography variant="h3" sx={{ color: "lightgrey" }}>
+                      Graph
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Box>
             ) : (
               <Box
                 display={"flex"}
@@ -172,35 +156,73 @@ const DashboardPage: React.FC<{}> = () => {
                 <Box>
                   <Button variant={"text"} sx={{ textTransform: "none" }}>
                     Take a test to see performance
-                    <ArrowForward sx={{ ml: "1rem" }} />
                   </Button>
                 </Box>
               </Box>
             )}
           </Card>
-          <Box sx={{ mt: "1rem" }}>
-            <Typography
-              variant="h6"
-              sx={{
-                p: "1rem",
-                color: "white",
-                background:
-                  "linear-gradient(90deg, rgb(20, 30, 48) 11.2%, rgb(36, 59, 85) 100%)",
-              }}
-            >
+          <Card
+            sx={{
+              p: "1rem",
+              m: "1rem",
+              border: "1px solid lightgray",
+              bgcolor: "whitesmoke",
+            }}
+          >
+            <Typography variant="h5" fontWeight={"bold"}>
               Recent Tests
             </Typography>
-            <Grid container spacing={2} sx={{ p: "1rem" }}>
+            <Grid container columnSpacing={2} rowGap={2} sx={{ mt: "1rem" }}>
               {recentTests.map(test => (
-                <Grid item xs={12} md={4} lg={3} key={test.id}>
-                  <Card>
-                    <CardContent>{test.testName}</CardContent>
+                <Grid item xs={12} sm={12} md={6} lg={3} key={test.id}>
+                  <Card sx={{ height: "100px" }}>
+                    <CardContent
+                      style={{ padding: "1rem" }}
+                      sx={{
+                        height: "100%",
+                      }}
+                    >
+                      <Grid container sx={{ height: "100%" }}>
+                        <Grid item xs={8} sx={{ height: "100%" }}>
+                          <Typography variant={"button"}>
+                            {test.name}
+                          </Typography>
+                          <Typography
+                            variant={"body2"}
+                            fontStyle={"italic"}
+                            color={"GrayText"}
+                          >
+                            {test.type}
+                          </Typography>
+                          <Typography
+                            variant={"body2"}
+                            fontStyle={"italic"}
+                            color={"GrayText"}
+                          >
+                            {test.date}
+                          </Typography>
+                        </Grid>
+                        <Grid item xs={4} textAlign={"end"}>
+                          <Typography variant={"h6"}>
+                            {test.obtained_marks} / {test.max_marks}
+                          </Typography>
+                        </Grid>
+                      </Grid>
+                    </CardContent>
                   </Card>
                 </Grid>
               ))}
-              <Grid item xs={12} md={4} lg={3}>
-                <Card>
-                  <CardContent sx={{ textAlign: "center" }}>
+              <Grid item xs={12} sm={12} md={6} lg={3}>
+                <Card sx={{ height: "100px" }}>
+                  <CardContent
+                    sx={{
+                      p: "1rem",
+                      height: "100%",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
                     <Link href="#" variant="button">
                       See all
                     </Link>
@@ -208,7 +230,7 @@ const DashboardPage: React.FC<{}> = () => {
                 </Card>
               </Grid>
             </Grid>
-          </Box>
+          </Card>
         </Box>
       ) : (
         <Box
@@ -220,7 +242,7 @@ const DashboardPage: React.FC<{}> = () => {
           alignItems={"center"}
         >
           <Box sx={{ width: { xs: "50%", md: "25%" } }}>
-            <img src={ExamRegImg} width={"100%"} />
+            <img src={ExamRegImg} width={"100%"} alt="Exam Registration" />
           </Box>
 
           <Typography variant={"h5"} textTransform={"none"} fontWeight={"bold"}>
@@ -234,6 +256,7 @@ const DashboardPage: React.FC<{}> = () => {
             onClick={() => routeToExamRegPage()}
           >
             Continue
+            <KeyboardBackspace sx={{ ml: "0.5rem", transform: "scaleX(-1)" }} />
           </Button>
         </Box>
       )}

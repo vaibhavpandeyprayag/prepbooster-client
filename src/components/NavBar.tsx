@@ -1,52 +1,37 @@
-import { Box, Typography, Avatar, Button, Input } from "@mui/material";
 import {
-  PageContext,
-  TestContext,
-  TestContextInterface,
-  TestInterface,
-  pageMap,
-} from "../exports";
-import { FormEvent, useContext, useEffect, useState } from "react";
+  Box,
+  Typography,
+  Avatar,
+  Button,
+  Input,
+  InputLabel,
+  Select,
+  MenuItem,
+  FormControl,
+  Menu,
+  Divider,
+} from "@mui/material";
+import { MouseEvent, useContext, useEffect, useState } from "react";
 import Logo from "../assets/app_logo_transparent_2.png";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { AccountCircle, KeyboardArrowDown } from "@mui/icons-material";
 
 const NavBar: React.FC<{}> = () => {
-  let title = "";
-  const { page, setPage } = useContext(PageContext);
-  const { test, setTest } = useContext<TestContextInterface>(TestContext);
-  const [timer, setTimer] = useState(5);
-  const [timerInterval, setTimerInterval] = useState<any>();
-  if (page != null) {
-    if (page == 3) {
-      title = `${pageMap[page]}: `;
-    } else if (page == 4) {
-      title = `${pageMap[page]}: `;
-    } else title = pageMap[page];
-  }
-
-  const [text, setText] = useState("");
-
-  useEffect(() => {
-    console.log("NavBar rendered for the first time.");
-  });
-  useEffect(() => {
-    console.log("NavBar rendered due to page change.");
-  }, [page]);
-  useEffect(() => {
-    console.log("NavBar rendered due to test.");
-    if (timer == 0) {
-      clearInterval(timerInterval);
-      console.log("Test got over.");
-    }
-  }, [test]);
-  useEffect(() => {
-    console.log("NavBar rendered due to timer ticking.");
-  }, [timer]);
-
+  const examList = [
+    { id: 1, name: "GATE" },
+    { id: 2, name: "NEET" },
+    { id: 3, name: "CAT" },
+  ];
+  const [examId, setExamId] = useState(examList[0].id);
+  const selectedExamName = examList.filter(exam => exam.id == examId)[0].name;
   const navigate = useNavigate();
-  const logoClick = () => {
-    navigate("/home");
-  };
+  const logoClick = () => navigate("/home");
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  useEffect(() => {
+    console.log("NavBar rendered");
+  });
+
   return (
     <Box sx={{ backgroundColor: "rgb(211 211 211 / 25%)" }}>
       <Box
@@ -69,6 +54,57 @@ const NavBar: React.FC<{}> = () => {
           }}
           onClick={logoClick}
         />
+        <Box sx={{ display: "flex" }}>
+          <Button
+            id={"registered-exam-button"}
+            variant={"text"}
+            onClick={(e: MouseEvent<HTMLElement>) =>
+              setAnchorEl(e.currentTarget)
+            }
+            sx={{ display: "flex", flexDirection: "column" }}
+          >
+            <Typography
+              variant={"caption"}
+              color={"gray"}
+              sx={{ textTransform: "none", fontStyle: "italic" }}
+            >
+              Selected exam:
+            </Typography>
+            <span style={{ display: "flex", alignItems: "center" }}>
+              <Typography
+                variant={"body2"}
+                color={"GrayText"}
+                fontWeight={"bold"}
+              >
+                {selectedExamName}
+              </Typography>
+              <KeyboardArrowDown />
+            </span>
+          </Button>
+          <Menu
+            id={"registered-exam-menu"}
+            anchorEl={anchorEl}
+            open={open}
+            onClose={() => setAnchorEl(null)}
+          >
+            {examList.map((exam, index) => (
+              <MenuItem
+                key={index}
+                onClick={() => {
+                  setExamId(exam.id);
+                  setAnchorEl(null);
+                }}
+                disableRipple
+              >
+                {exam.name}
+              </MenuItem>
+            ))}
+          </Menu>
+          <Button variant={"text"} sx={{ textTransform: "none" }}>
+            <AccountCircle fontSize={"large"} sx={{ mr: "0.5rem" }} />
+            Vaibhav
+          </Button>
+        </Box>
       </Box>
     </Box>
   );
