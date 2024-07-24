@@ -115,8 +115,10 @@ const ExamRegistrationPage: React.FC<{}> = () => {
                 setExamId(Number(e.target.value))
               }
             >
-              {examList.map(exam => (
-                <MenuItem value={exam.id}>{exam.name}</MenuItem>
+              {examList.map((exam, i) => (
+                <MenuItem key={"exam" + i} value={exam.id}>
+                  {exam.name}
+                </MenuItem>
               ))}
             </Select>
           </FormControl>

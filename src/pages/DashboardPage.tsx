@@ -13,7 +13,6 @@ import {
   Typography,
 } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
-import { PageContext } from "../exports";
 import {
   ArrowForward,
   Backspace,
@@ -23,7 +22,6 @@ import ExamRegImg from "../assets/exam-registration.jpg";
 import { useNavigate } from "react-router-dom";
 
 const DashboardPage: React.FC<{}> = () => {
-  const { page, setPage } = useContext(PageContext);
   const [user, setUser] = useState({ firstName: "Vaibhav" });
   const [exam, setExam] = useState("");
   const navigate = useNavigate();
@@ -59,10 +57,12 @@ const DashboardPage: React.FC<{}> = () => {
   const routeToExamRegPage = () => {
     navigate("/user/exam-registration");
   };
+  const routeToRecentTestsPage = () => {
+    navigate("/user/recent-tests");
+  };
 
   useEffect(() => {
     console.log("Dashboard rendered for the first time.");
-    setPage(1);
     recentTests = [];
   }, []);
   return (
@@ -223,7 +223,11 @@ const DashboardPage: React.FC<{}> = () => {
                       alignItems: "center",
                     }}
                   >
-                    <Link href="#" variant="button">
+                    <Link
+                      href="#"
+                      variant="button"
+                      onClick={routeToRecentTestsPage}
+                    >
                       See all
                     </Link>
                   </CardContent>

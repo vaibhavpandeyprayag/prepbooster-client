@@ -10,15 +10,12 @@ import {
   Typography,
 } from "@mui/material";
 import { useContext, useEffect } from "react";
-import { PageContext } from "../exports";
 import img from "../logo.svg";
 
 const TestPage: React.FC<{}> = () => {
-  const { page, setPage } = useContext(PageContext);
   const imgUrl = "../logo.svg";
   useEffect(() => {
     console.log("TestPage rendered for the first time.");
-    setPage(3);
   }, []);
   return (
     <Container maxWidth={false} disableGutters>
