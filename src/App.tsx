@@ -10,6 +10,7 @@ import DashboardPage from "./pages/DashboardPage";
 import UserScreen from "./components/UserScreen";
 import ExamRegistrationPage from "./pages/ExamRegistrationPage";
 import RecentTestsPage from "./pages/RecentTestsPage";
+import TestPage from "./pages/TestPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="exam-registration" element={<ExamRegistrationPage />} />
         <Route path="*" element={<ErrorPage />}></Route>
       </Route>
+      <Route path="/test" element={<TestPage />} />
 
       <Route path="/*" element={<ErrorPage />}></Route>
     </Routes>
