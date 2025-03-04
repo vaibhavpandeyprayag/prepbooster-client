@@ -45,6 +45,18 @@ const TestPage: React.FC<{}> = () => {
               marginBottom: "1rem",
             }}
           />
+
+          <Typography
+            sx={{
+              backgroundColor: "oldlace",
+              paddingX: "16px",
+              paddingY: "5px",
+              color: "black",
+            }}
+          >
+            Unit Test 1
+          </Typography>
+
           <Box sx={{ display: "flex", alignItems: "stretch", gap: "1rem" }}>
             <Box
               id="testRemainTime"
@@ -82,7 +94,8 @@ const TestPage: React.FC<{}> = () => {
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
-              background: "rgb(0, 110, 255)",
+              backgroundColor: "#333399",
+
               borderBottom: 1,
               borderColor: "lightgray",
             }}
@@ -105,14 +118,20 @@ const TestPage: React.FC<{}> = () => {
                 height: "100%",
                 alignContent: "center",
                 paddingX: "1rem",
-                color: "white",
+                // background:
+                //   "linear-gradient(to left,rgba(255, 255, 255, 0.9),rgba(255, 255, 255, 0.1))",
+                // background: "transparent",
+                // backdropFilter: "blur(16px)",
               }}
             >
-              <Typography sx={{ fontSize: 12, letterSpacing: 1 }}>
+              <Typography
+                sx={{ fontSize: 12, letterSpacing: 1, color: "white" }}
+              >
                 Marks:{" "}
                 <span
                   style={{
-                    color: "lightgreen",
+                    // color: "lightgreen",
+                    color: "white",
                     fontWeight: "bold",
                     fontSize: "16px",
                   }}
@@ -120,16 +139,19 @@ const TestPage: React.FC<{}> = () => {
                   {4}
                 </span>
               </Typography>
-              <Typography sx={{ fontSize: 12, letterSpacing: 1 }}>
+              <Typography
+                sx={{ fontSize: 12, letterSpacing: 1, color: "white" }}
+              >
                 Negative marking:{" "}
                 <span
                   style={{
-                    color: "rgb(211, 59, 59)",
+                    // color: "rgb(254, 150, 150)",
+                    color: "white",
                     fontSize: "16px",
                     fontWeight: "bold",
                   }}
                 >
-                  {4}
+                  {1}
                 </span>
               </Typography>
             </Box>
@@ -218,30 +240,37 @@ const TestPage: React.FC<{}> = () => {
               .repeat(30)
               .split(",")
               .map((question, i) => (
-                <Box
+                <Button
                   key={"key" + i}
                   sx={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    width: { xs: "44px", md: "56px" },
+                    width: { xs: "40px", md: "56px" },
                     height: { xs: "44px", md: "56px" },
                     border: "2px solid lightgray",
                     borderRadius: "8px",
                     background: "linear-gradient(white, lightgray)",
                   }}
                 >
-                  <Typography sx={{ fontSize: { xs: "12px", md: "16px" } }}>
+                  <Typography
+                    sx={{
+                      color: "black",
+                      fontSize: { xs: "12px", md: "16px" },
+                    }}
+                  >
                     {i + 1}
                   </Typography>
-                </Box>
+                </Button>
               ))}
           </Box>
           <Box
             sx={{
               minHeight: { xs: "15vh", md: "30vh" },
               maxHeight: { xs: "15vh" },
+              boxShadow: "2px -1px 8px gray", // Top shadow
             }}
+            boxShadow={"1"}
           >
             <Grid
               container
@@ -270,7 +299,7 @@ const TestPage: React.FC<{}> = () => {
                     borderRadius: "8px",
                   }}
                 >
-                  <Box
+                  <Button
                     sx={{
                       display: "flex",
                       justifyContent: "center",
@@ -287,11 +316,12 @@ const TestPage: React.FC<{}> = () => {
                       sx={{
                         margin: "auto",
                         fontSize: { xs: "12px", md: "16px" },
+                        color: "black",
                       }}
                     >
                       12
                     </Typography>
-                  </Box>
+                  </Button>
                   <Typography sx={{ letterSpacing: 1, fontSize: "12px" }}>
                     Not visited
                   </Typography>
@@ -317,7 +347,7 @@ const TestPage: React.FC<{}> = () => {
                     margin: "0.5rem",
                   }}
                 >
-                  <Box
+                  <Button
                     sx={{
                       display: "flex",
                       justifyContent: "center",
@@ -327,18 +357,19 @@ const TestPage: React.FC<{}> = () => {
                       marginBottom: "4px",
                       border: "2px solid lightgray",
                       borderRadius: "8px",
-                      background: "linear-gradient(white, lightgray)",
+                      background: "linear-gradient(white, red)",
                     }}
                   >
                     <Typography
                       sx={{
                         margin: "auto",
                         fontSize: { xs: "12px", md: "16px" },
+                        color: "black",
                       }}
                     >
                       12
                     </Typography>
-                  </Box>
+                  </Button>
                   <Typography sx={{ letterSpacing: 1, fontSize: "12px" }}>
                     Not answered
                   </Typography>
@@ -364,7 +395,7 @@ const TestPage: React.FC<{}> = () => {
                     margin: "0.5rem",
                   }}
                 >
-                  <Box
+                  <Button
                     sx={{
                       display: "flex",
                       justifyContent: "center",
@@ -374,18 +405,19 @@ const TestPage: React.FC<{}> = () => {
                       marginBottom: "4px",
                       border: "2px solid lightgray",
                       borderRadius: "8px",
-                      background: "linear-gradient(white, lightgray)",
+                      background: "linear-gradient(white, lightgreen)",
                     }}
                   >
                     <Typography
                       sx={{
                         margin: "auto",
                         fontSize: { xs: "12px", md: "16px" },
+                        color: "black",
                       }}
                     >
                       12
                     </Typography>
-                  </Box>
+                  </Button>
                   <Typography sx={{ letterSpacing: 1, fontSize: "12px" }}>
                     Answered
                   </Typography>
@@ -411,7 +443,7 @@ const TestPage: React.FC<{}> = () => {
                     margin: "0.5rem",
                   }}
                 >
-                  <Box
+                  <Button
                     sx={{
                       display: "flex",
                       justifyContent: "center",
@@ -421,18 +453,19 @@ const TestPage: React.FC<{}> = () => {
                       marginBottom: "4px",
                       border: "2px solid lightgray",
                       borderRadius: "8px",
-                      background: "linear-gradient(white, lightgray)",
+                      background: "linear-gradient(white, yellow)",
                     }}
                   >
                     <Typography
                       sx={{
                         margin: "auto",
                         fontSize: { xs: "12px", md: "16px" },
+                        color: "black",
                       }}
                     >
                       12
                     </Typography>
-                  </Box>
+                  </Button>
                   <Typography sx={{ letterSpacing: 1, fontSize: "12px" }}>
                     Marked for review
                   </Typography>
