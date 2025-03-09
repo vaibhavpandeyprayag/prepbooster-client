@@ -1,6 +1,8 @@
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import HeroImg from "./../../assets/app_logo_transparent_2.png";
 import IntroImg1 from "./../../assets/app_logo.png";
+import HeroSecImg1 from "./../../assets/hero-sec-img-1.jpg";
+import HeroSecImg2 from "./../../assets/hero-sec-img-2.png";
 import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
 
@@ -15,21 +17,121 @@ const HomePage: React.FC<{}> = () => {
   };
 
   return (
-    <div className={"homepage"}>
+    <div>
       <Box
-        height={"100vh"}
+        position={"relative"}
         display={"flex"}
         flexDirection="column"
         justifyContent={"center"}
         alignItems={"center"}
-        className={"hero-section fade-in"}
+        height={"100vh"}
+        className={"fade-in"}
       >
+        <img
+          style={{
+            position: "absolute",
+            top: "10%",
+            left: "10%",
+            width: "360px",
+            height: "320px",
+            zIndex: -1,
+            opacity: "50%",
+          }}
+          src={HeroSecImg1}
+        />
+        <img
+          style={{
+            position: "absolute",
+            bottom: "10%",
+            right: "5%",
+            width: "480px",
+            height: "320px",
+            zIndex: -1,
+            opacity: "50%",
+          }}
+          src={HeroSecImg2}
+        />
+        <Box
+          sx={{
+            position: "absolute",
+            bottom: "10%",
+            left: "5%",
+            zIndex: -1,
+            display: "flex",
+            flexDirection: "row",
+            gap: 1,
+            alignItems: "end",
+          }}
+        >
+          <Box
+            sx={{
+              borderRadius: "100%",
+              width: 75,
+              height: 75,
+              backgroundColor: "steelblue",
+            }}
+          ></Box>
+          <Box
+            sx={{
+              borderRadius: "100%",
+              width: 50,
+              height: 50,
+              backgroundColor: "steelblue",
+            }}
+          ></Box>
+          <Box
+            sx={{
+              borderRadius: "100%",
+              width: 25,
+              height: 25,
+              backgroundColor: "steelblue",
+            }}
+          ></Box>
+        </Box>
+        <Box
+          sx={{
+            position: "absolute",
+            top: "10%",
+            right: "5%",
+            zIndex: -1,
+            display: "flex",
+            flexDirection: "row-reverse",
+            gap: 1,
+            alignItems: "start",
+          }}
+        >
+          <Box
+            sx={{
+              borderRadius: "100%",
+              width: 75,
+              height: 75,
+              backgroundColor: "steelblue",
+            }}
+          ></Box>
+          <Box
+            sx={{
+              borderRadius: "100%",
+              width: 50,
+              height: 50,
+              backgroundColor: "steelblue",
+            }}
+          ></Box>
+          <Box
+            sx={{
+              borderRadius: "100%",
+              width: 25,
+              height: 25,
+              backgroundColor: "steelblue",
+            }}
+          ></Box>
+        </Box>
         <img src={HeroImg} style={{ width: "50%" }} />
         <Typography
           color={"Highlight"}
           variant={"h4"}
           fontWeight={"bold"}
           my={3}
+          sx={{ textShadow: "1px 1px 16px" }}
         >
           Your Pathway to Perfect Scores!
         </Typography>

@@ -11,6 +11,7 @@ import UserScreen from "./components/UserScreen";
 import ExamRegistrationPage from "./pages/ExamRegistrationPage";
 import RecentTestsPage from "./pages/RecentTestsPage";
 import TestPage from "./pages/TestPage";
+import InstructionPage from "./pages/InstructionPage";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="dashboard" element={<DashboardPage />} />
         <Route path="recent-tests" element={<RecentTestsPage />} />
         <Route path="exam-registration" element={<ExamRegistrationPage />} />
+        <Route path="instructions" element={<InstructionPage />} />
         <Route path="*" element={<ErrorPage />}></Route>
       </Route>
       <Route path="/test" element={<TestPage />} />

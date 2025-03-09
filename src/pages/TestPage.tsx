@@ -66,6 +66,7 @@ const TestPage: React.FC<{}> = () => {
                 backgroundColor: "beige",
                 paddingX: "1rem",
                 gap: "0.5rem",
+                borderLeft: "4px solid orange",
               }}
             >
               <Typography sx={{ fontSize: "12px" }}>
